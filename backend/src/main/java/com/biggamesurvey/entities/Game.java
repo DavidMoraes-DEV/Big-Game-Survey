@@ -1,10 +1,11 @@
-package com.microserviceshrworker.entities;
+package com.biggamesurvey.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,7 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.microserviceshrworker.entities.enums.Platform;
+import com.biggamesurvey.entities.enums.Platform;
 
 @Entity
 @Table(name = "tb_game")
@@ -31,7 +32,7 @@ public class Game implements Serializable {
 	@JoinColumn(name = "genre_id")
 	private Genre genre;
 	
-	@OneToMany(mappedBy = "game")
+	@OneToMany(mappedBy = "game", cascade = CascadeType.ALL)
 	private List<Record> records = new ArrayList<>();
 	
 	public Game() {
@@ -68,11 +69,11 @@ public class Game implements Serializable {
 		this.platform = platform;
 	}
 
-	public Genre getGenreId() {
+	public Genre getGenre() {
 		return genre;
 	}
 
-	public void setGenreId(Genre genre) {
+	public void setGenre(Genre genre) {
 		this.genre = genre;
 	}
 

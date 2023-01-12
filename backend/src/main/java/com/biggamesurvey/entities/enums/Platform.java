@@ -1,4 +1,4 @@
-package com.microserviceshrworker.entities.enums;
+package com.biggamesurvey.entities.enums;
 
 public enum Platform {
 	PC, PLAYSTATION, XBOX;

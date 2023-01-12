@@ -1,4 +1,4 @@
-package com.microserviceshrworker.entities;
+package com.biggamesurvey.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
@@ -23,7 +23,6 @@ public class Record implements Serializable {
 	private String name;
 	private Integer age;
 	private Instant moment;
-	
 	@ManyToOne
 	@JoinColumn(name = "game_id")
 	private Game game;
@@ -71,11 +70,11 @@ public class Record implements Serializable {
 		this.moment = moment;
 	}
 
-	public Game getGameId() {
+	public Game getGame() {
 		return game;
 	}
 
-	public void setGameId(Game game) {
+	public void setGame(Game game) {
 		this.game = game;
 	}
 

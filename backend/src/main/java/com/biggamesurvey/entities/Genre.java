@@ -1,4 +1,4 @@
-package com.microserviceshrworker.entities;
+package com.biggamesurvey.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class Genre implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String genre;
+	private String name;
 	
 	@OneToMany(mappedBy = "genre")
 	private List<Game> games = new ArrayList<>();
@@ -28,9 +28,9 @@ public class Genre implements Serializable {
 	public Genre() {
 	}
 
-	public Genre(Long id, String genre) {
+	public Genre(Long id, String name) {
 		this.id = id;
-		this.genre = genre;
+		this.name = name;
 	}
 
 	public Long getId() {
@@ -41,12 +41,12 @@ public class Genre implements Serializable {
 		this.id = id;
 	}
 
-	public String getGenre() {
-		return genre;
+	public String getName() {
+		return name;
 	}
 
-	public void setGenre(String genre) {
-		this.genre = genre;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public List<Game> getGames() {
