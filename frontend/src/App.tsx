@@ -1,16 +1,10 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
-import Home from './pages/Home'
-import Header from './components/Header'
+import "./App.css";
+import Routes from "./Routes";
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <Home />
-    </div>
-  )
+      <Routes />
+  );
 }
 
-export default App
+export default App;
