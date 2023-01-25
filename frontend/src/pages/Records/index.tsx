@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Pagination from "../../components/Pagination";
 import { RecordItem, RecordResponse } from "../../types";
 import { formDate } from "./helpers";
 import "./styles.css";
@@ -41,6 +42,7 @@ const Records = () => {
           ))}
         </tbody>
       </table>
+      <Pagination />
     </div>
   );
 };
