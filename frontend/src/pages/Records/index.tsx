@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import Filters from "../../components/Filters";
 import Pagination from "../../components/Pagination";
 import { RecordItem, RecordResponse } from "../../types";
 import { formDate } from "./helpers";
@@ -19,10 +21,11 @@ const Records = () => {
 
   const handlePageChange = (index: number) => {
     setActivePage(index);
-  }
+  };
 
   return (
     <div className="page-container">
+      <Filters link="/charts" linkText="VER GRÁFICO" />
       <table className="records-table" cellPadding="0" cellSpacing="0">
         <thead>
           <tr>
