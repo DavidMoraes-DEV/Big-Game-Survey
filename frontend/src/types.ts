@@ -14,3 +14,14 @@ export type RecordItem = {
 }
 
 export type Platform = "XBOX" | "PC" | "PLAYSTATION";
+
+export type Game = {
+    id: number;
+    title: string;
+    platform: Platform;
+}
+
+export type ChartItem = {
+    x: string;
+    y: number;
+}
