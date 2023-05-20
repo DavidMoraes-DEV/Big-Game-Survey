@@ -6,6 +6,9 @@ import {
   Play_700Bold,
 } from "@expo-google-fonts/play";
 
+import Header from './src/components/Header';
+import Home from "./src/pages/Home";
+
 export default function App() {
   const [fontsLoaded] = useFonts({
     Play_400Regular,
@@ -17,7 +20,8 @@ export default function App() {
   } else {
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>Hello World!!!</Text>
+        <Header />
+        <Home />
         <StatusBar style="light" />
       </View>
     );
@@ -27,12 +31,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "blue",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  text: {
-    color: "yellow",
-    fontSize: 50,
-  },
+    backgroundColor: "#0B1F34"
+  }
 });
