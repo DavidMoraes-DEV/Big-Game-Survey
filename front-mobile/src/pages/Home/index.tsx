@@ -1,13 +1,19 @@
 import { Alert, Image, StyleSheet, Text, View } from "react-native";
 import { RectButton } from "react-native-gesture-handler";
 import { FontAwesome as Icon } from "@expo/vector-icons";
+import Header from "../../components/Header";
+import { useNavigation } from '@react-navigation/native';
 
 const Home = () => {
-    const handleOnPress = () => {
-        Alert.alert('Você clicou no botão!')
-    }
+
+    const navigation = useNavigation();
+
+  const handleOnPress = () => {
+    navigation.navigate('CreateRecord' as never);
+  };
   return (
     <>
+      <Header />
       <View style={styles.container}>
         <Image
           style={styles.gamerImage}
@@ -18,12 +24,12 @@ const Home = () => {
       </View>
       <View style={styles.footer}>
         <RectButton style={styles.button} onPress={handleOnPress}>
-            <Text style={styles.buttonText}>COLETAR DADOS</Text>
-            <View style={styles.buttonIcon}>
-                <Text>
-                    <Icon name="chevron-right" color="#fff" size={25} />
-                </Text>
-            </View>
+          <Text style={styles.buttonText}>COLETAR DADOS</Text>
+          <View style={styles.buttonIcon}>
+            <Text>
+              <Icon name="chevron-right" color="#fff" size={25} />
+            </Text>
+          </View>
         </RectButton>
       </View>
     </>
