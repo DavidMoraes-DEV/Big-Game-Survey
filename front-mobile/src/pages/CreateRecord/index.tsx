@@ -1,23 +1,40 @@
 import { StyleSheet, Text, TextInput, View } from "react-native";
 import Header from "../../components/Header";
 import PlatformCard from "./PlatformCard";
-import { useState } from "react";
-import { GamePlatform } from "./types";
+import { useEffect, useState } from "react";
+import { Game, GamePlatform } from "./types";
 import { Picker } from "@react-native-picker/picker";
+import axios from "axios";
 
 const placeholder = {
   label: "Selecione o game",
   value: null,
 };
 
+const mapSelectValue = (games: Game[]) => {
+  return games.map((game) => ({
+    ...game,
+    label: game.tittle,
+    value: game.id,
+  }));
+};
+
 const CreateRecord = () => {
   const [platform, setPlatform] = useState<GamePlatform>();
+  const [selectedGame, setSelectedGame] = useState("");
+  const BASE_URL = "http://192.168.200.102:8080";
+  const [allGames, setAllGames] = useState<Game[]>([]);
 
   const handleChangePlatform = (selectedPlatform: GamePlatform) => {
     setPlatform(selectedPlatform);
   };
 
-  const [selectedGame, setSelectedGame] = useState("");
+  useEffect(() => {
+    axios.get(`${BASE_URL}/games`).then((response) => {
+      const selectValue = mapSelectValue(response.data);
+      setAllGames(selectValue);
+    });
+  }, []);
 
   return (
     <>
@@ -70,21 +87,14 @@ const CreateRecord = () => {
             value={"null"}
             style={pickerSelectStyles.placeholder}
           />
-          <Picker.Item
-            label="Game 1"
-            value={"Nome do Game 1"}
-            style={pickerSelectStyles.inputAndroid}
-          />
-          <Picker.Item
-            label="Game 2"
-            value={"Nome do Game 2"}
-            style={pickerSelectStyles.inputAndroid}
-          />
-          <Picker.Item
-            label="Game 3"
-            value={"Nome do Game 3"}
-            style={pickerSelectStyles.inputAndroid}
-          />
+          {allGames.map((game) => (
+            <Picker.Item
+              key={game.id}
+              label={game.label}
+              value={game.value}
+              style={pickerSelectStyles.inputAndroid}
+            />
+          ))}
         </Picker>
       </View>
     </>
