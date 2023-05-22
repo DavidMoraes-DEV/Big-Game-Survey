@@ -14,7 +14,7 @@ const placeholder = {
 const mapSelectValue = (games: Game[]) => {
   return games.map((game) => ({
     ...game,
-    label: game.tittle,
+    label: game.title,
     value: game.id,
   }));
 };
@@ -73,7 +73,8 @@ const CreateRecord = () => {
           />
         </View>
         <Picker
-          selectedValue={"Selecione o Game"}
+          placeholder={placeholder.label}
+          selectedValue={selectedGame}
           onValueChange={(value) => {
             setSelectedGame(value);
           }}
@@ -82,11 +83,6 @@ const CreateRecord = () => {
             { backgroundColor: "#888", borderRadius: 10 },
           ]}
         >
-          <Picker.Item
-            label="Selecione o Game"
-            value={"null"}
-            style={pickerSelectStyles.placeholder}
-          />
           {allGames.map((game) => (
             <Picker.Item
               key={game.id}
@@ -117,7 +113,7 @@ const pickerSelectStyles = StyleSheet.create({
     fontSize: 16,
     paddingVertical: 12,
     paddingHorizontal: 20,
-    backgroundColor: "#FFF",
+    backgroundColor: "##888",
     borderRadius: 10,
     color: "#ED7947",
     paddingRight: 30,
